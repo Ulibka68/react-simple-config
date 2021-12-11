@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "react-boilerplate-2021",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "webpack serve --mode=development",
     "clear": "rimraf ./node_modules",
