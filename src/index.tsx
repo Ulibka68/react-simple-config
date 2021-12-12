@@ -6,9 +6,9 @@ import style from './index.module.css';
 ReactDOM.render(
   <div>
     <div>
-      <h1 className={style.h1Background}>React boilerplate</h1>
+      <h1 className={style.h1Background + ' color1'}>React boilerplate</h1>
     </div>
-    <div>
+    <div className="h1-global">
       <h1>Просто React boilerplate</h1>
     </div>
   </div>,

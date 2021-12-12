@@ -37,7 +37,12 @@ export default {
               modules: {
                 mode: 'local',
                 auto: true,
-                localIdentName: '[path][name]__[local]--[hash:base64:5]',
+                localIdentName: '[local]--[hash:base64:5]',
+                exportGlobals: true,
+                localIdentContext: path.resolve(__dirname, 'src'),
+                // namedExport: true, // проблема с доступом по default
+                exportOnlyLocals: false,
+                exportLocalsConvention: 'camelCase',
               },
             },
           },
