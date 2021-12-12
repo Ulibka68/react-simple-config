@@ -1,6 +1,4 @@
-// const path = require('path');
 import path, { dirname } from 'path';
-// const HtmlWebpackPlugin = require('html-webpack-plugin');
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -36,9 +34,11 @@ export default {
           {
             loader: 'css-loader',
             options: {
-              importLoaders: 1,
-              modules: true,
-              localIdentName: '[path]_[name]_[local]_[hash:base64:5]',
+              modules: {
+                mode: 'local',
+                auto: true,
+                localIdentName: '[path][name]__[local]--[hash:base64:5]',
+              },
             },
           },
         ],
@@ -48,17 +48,6 @@ export default {
         test: /\.scss$/,
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
-      {
-        test: /\.(png|jpg|gif|svg)$/i,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 8192,
-            },
-          },
-        ],
-      },
     ],
   },
   plugins: [
@@ -66,16 +55,4 @@ export default {
       template: './public/index.html',
     }),
   ],
-  optimization: {
-    runtimeChunk: 'single',
-    splitChunks: {
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all',
-        },
-      },
-    },
-  },
 };
